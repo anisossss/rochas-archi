@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Juana';
+        src: url('/assets/fonts/JuanaRegularIt.woff2') format('woff2'),
+             url('/assets/fonts/JuanaRegularIt.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+        font-display: auto;
+    }
+
+    @font-face {
+        font-family: 'Juana';
+        src: url('/assets/fonts/JuanaRegular.woff2') format('woff2'),
+             url('/assets/fonts/JuanaRegular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        src: url('/assets/fonts/GilroyBold.woff2') format('woff2'),
+             url('/assets/fonts/GilroyBold.woff') format('woff');
+    }
+}
+
+@layer components {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    #content::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    #content {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    /* slide nav */
+    #slider-nav[data-current="1"] > span:nth-of-type(1),
+    #slider-nav[data-current="2"] > span:nth-of-type(2),
+    #slider-nav[data-current="3"] > span:nth-of-type(3),
+    #slider-nav[data-current="4"] > span:nth-of-type(4),
+    #slider-nav[data-current="5"] > span:nth-of-type(5),
+    #slider-nav[data-current="6"] > span:nth-of-type(6) {
+        background-color: theme('colors.black');
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #slider-nav[data-current="1"] > span:nth-of-type(1),
+        #slider-nav[data-current="2"] > span:nth-of-type(2),
+        #slider-nav[data-current="3"] > span:nth-of-type(3),
+        #slider-nav[data-current="4"] > span:nth-of-type(4),
+        #slider-nav[data-current="5"] > span:nth-of-type(5),
+        #slider-nav[data-current="6"] > span:nth-of-type(6) {
+            background-color: theme('colors.light');
+        }
+    }
+}
+
+@layer utilities {
+    .scroll-snap-x {
+        scroll-snap-type: x mandatory;
+    }
+    .scroll-snap-y {
+        scroll-snap-type: y mandatory;
+    }
+    .scroll-snap-x-proximity {
+        scroll-snap-type: x proximity;
+    }
+    .scroll-snap-y-proximity {
+        scroll-snap-type: y proximity;
+    }
+    .scroll-snap-start {
+        scroll-snap-align: start;
+    }
+    .scroll-snap-center {
+        scroll-snap-align: center;
+    }
+    .scroll-snap-end {
+        scroll-snap-align: end;
+    }
+}

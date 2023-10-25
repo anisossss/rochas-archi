@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>curtains.js</title>
+<style>
+  .container{
+    height: 100vh;
+  }
+#canvas {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 10;
+}
+#flowmap {
+  width: 100%;
+  height: 100vh;
+}
+#flowmap img {
+  display: none;
+}
+
+</style>
+  </head>
+  <body>
+      <div id="canvas"></div>
+      <div id="flowmap">
+        <img src="./pictures/chambre_coucher3.jpg" alt="" data-sampler="planeTexture" />
+      </div>
+    <script src="/js/curtain.js"></script>
+    <script src="/js/script.js" type="module"></script>
+  </body>
+</html>
