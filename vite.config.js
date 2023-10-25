@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import glslify from 'rollup-plugin-glslify'
 import * as path from 'path'
 
 export default defineConfig({
@@ -10,7 +9,7 @@ export default defineConfig({
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        demo: './index.html',
+        demo: './transition.html',
       },
     },
   },
@@ -22,5 +21,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  plugins: [glslify()],
 })
