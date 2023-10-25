@@ -10,6 +10,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         demo: "./scroll.html",
+        demo2: "./transition.html",
+        demo3: "./fluid.html",
       },
     },
   },
