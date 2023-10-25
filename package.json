@@ -42,6 +42,7 @@
     "@studio-freight/lenis": "^1.0.16",
     "gsap": "^3.11.3",
     "lil-gui": "^0.17.0",
-    "ogl": "^0.0.101"
+    "ogl": "^0.0.101",
+    "vite-plugin-pages": "^0.31.0"
   }
 }
