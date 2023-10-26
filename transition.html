@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" class="hmax-md:text-smaller hmax-sm:text-smallest">
 <head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rochas Architecte</title>
@@ -8,15 +9,24 @@
     <link rel="stylesheet" type="text/css" href="/css/base.css">
 </head>
 <body class="antialiased font-serif bg-light dark:bg-dark text-black dark:text-light">
+    <div id="cursor"></div>
+    <div id="cursor-border"></div>
     <div id="loader"
          class="fixed z-50 inset-0 bg-light dark:bg-dark transition duration-300 flex items-center justify-center pointer-events-none"
          data-hide="opacity-0"
     >
         <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" class="stroke-current text-dark dark:text-light w-16 h-16 md:w-32 md:h-32 animate-pulse" > <g fill="none" fill-rule="evenodd" stroke-width="2"> <circle cx="22" cy="22" r="1"> <animate attributeName="r" begin="0s" calcMode="spline" dur="1.8s" keySplines="0.165, 0.84, 0.44, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 20" ></animate> <animate attributeName="stroke-opacity" begin="0s" calcMode="spline" dur="1.8s" keySplines="0.3, 0.61, 0.355, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 0" ></animate> </circle> <circle cx="22" cy="22" r="1"> <animate attributeName="r" begin="-0.9s" calcMode="spline" dur="1.8s" keySplines="0.165, 0.84, 0.44, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 20" ></animate> <animate attributeName="stroke-opacity" begin="-0.9s" calcMode="spline" dur="1.8s" keySplines="0.3, 0.61, 0.355, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 0" ></animate> </circle> </g> </svg>
     </div>
-    
+    <div class="navbar" data-cursor="pointer">
+        <img src="/pictures/logo_arch.png" width="120" height="120" class="img" />
+        <div class="flex">
+            <a href="/all" >All</a>
+            <a href="/about" >About</a>
+        </div>
+    </div>
     <main>
-        <div id="content" class="overflow-y-auto h-screen scroll-snap-y">
+        <div id="content" class="overflow-y-auto h-screen scroll-snap-y" >
+          
 
             <div class="relative flex flex-col items-center md:h-screen scroll-snap-start  ">
                 <div id="scroller" class="h-full max-w-full relative">
@@ -50,27 +60,21 @@
                   <span class="border-2 w-2 h-2 rounded-full"></span>
               
               </span>
-              <span id="slider-nav"
+              <!-- <span id="slider-nav"
               data-current="0"
               class=" flex flex-col items-center space-y-2 fixed  top-1/2 right-4 md:right-7  "
-          >
+          > -->
              
           </span>
                 </div>
                 
             </div>
-            <div class="wrapper">
-     
-                <svg id="next" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 516.3 516.3">
-                  <path id="path" d="M258.15,45A200,200 0 1,1 258.15,445A200,200 0 1,1 258.15,45" 
-                        stroke="black" stroke-width="22" fill="none" />
-                </svg>
-              </div>
+         
         </div>
        
     </main>
 
-    <div id="data-trigger-scroller" class="cursor-pointer w-12 rounded-full p-1 border hover:animate-pulse focus:animate-pulse focus:outline-none">
+    <div id="data-trigger-scroller">
     
     </div>
    
@@ -80,6 +84,40 @@
     <script src="/js/sketch.js"></script>
     <script src="/js/effect.js"></script>
     <script src="/js/ux.js"></script>
-    
+    <script>
+      const cursor = document.querySelector("#cursor");
+const cursorBorder = document.querySelector("#cursor-border");
+const cursorPos = { x: 0, y: 0 };
+const cursorBorderPos = { x: 0, y: 0 };
+document.addEventListener("mousemove", (e) => {
+  cursorPos.x = e.clientX;
+  cursorPos.y = e.clientY;
+
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+});
+
+requestAnimationFrame(function loop() {
+  const easting = 8;
+  cursorBorderPos.x += (cursorPos.x - cursorBorderPos.x) / easting;
+  cursorBorderPos.y += (cursorPos.y - cursorBorderPos.y) / easting;
+
+  cursorBorder.style.transform = `translate(${cursorBorderPos.x}px, ${cursorBorderPos.y}px)`;
+  requestAnimationFrame(loop);
+});
+
+document.querySelectorAll("[data-cursor]").forEach((item) => {
+  item.addEventListener("mouseover", (e) => {
+      cursorBorder.style.setProperty("--size", "30px");
+      cursor.style.display = "block"; 
+  });
+  item.addEventListener("mouseout", (e) => {
+    cursorBorder.style.setProperty("--size", "15px");
+    cursor.style.display = "none"; 
+    setTimeout(() => {
+  }, 2000); 
+  });
+    });
+
+    </script>
 </body>
 </html>
