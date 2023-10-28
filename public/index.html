@@ -24,18 +24,18 @@
             <a href="/about" >About</a>
         </div>
     </div>
-    <main>
+    <main >
         <div id="content" class="overflow-y-auto h-screen scroll-snap-y" >
-          
-
+            
             <div class="relative flex flex-col items-center md:h-screen scroll-snap-start  ">
                 <div id="scroller" class="h-full max-w-full relative">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          height="100"
                          width="1920"
                          class="mx-auto w-full h-auto md:h-full md:w-auto object-contain object-center"
-                    >
-                    </svg>
+                         >
+                        </svg>
+                        <div class="vignette"></div>
                     <div id="slider"
                          class="inset-0 absolute"
                          data-images='[
@@ -60,10 +60,7 @@
                   <span class="border-2 w-2 h-2 rounded-full"></span>
               
               </span>
-              <!-- <span id="slider-nav"
-              data-current="0"
-              class=" flex flex-col items-center space-y-2 fixed  top-1/2 right-4 md:right-7  "
-          > -->
+              
              
           </span>
                 </div>
@@ -84,40 +81,6 @@
     <script src="/js/sketch.js"></script>
     <script src="/js/effect.js"></script>
     <script src="/js/ux.js"></script>
-    <script>
-      const cursor = document.querySelector("#cursor");
-const cursorBorder = document.querySelector("#cursor-border");
-const cursorPos = { x: 0, y: 0 };
-const cursorBorderPos = { x: 0, y: 0 };
-document.addEventListener("mousemove", (e) => {
-  cursorPos.x = e.clientX;
-  cursorPos.y = e.clientY;
-
-  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-});
-
-requestAnimationFrame(function loop() {
-  const easting = 8;
-  cursorBorderPos.x += (cursorPos.x - cursorBorderPos.x) / easting;
-  cursorBorderPos.y += (cursorPos.y - cursorBorderPos.y) / easting;
-
-  cursorBorder.style.transform = `translate(${cursorBorderPos.x}px, ${cursorBorderPos.y}px)`;
-  requestAnimationFrame(loop);
-});
-
-document.querySelectorAll("[data-cursor]").forEach((item) => {
-  item.addEventListener("mouseover", (e) => {
-      cursorBorder.style.setProperty("--size", "30px");
-      cursor.style.display = "block"; 
-  });
-  item.addEventListener("mouseout", (e) => {
-    cursorBorder.style.setProperty("--size", "15px");
-    cursor.style.display = "none"; 
-    setTimeout(() => {
-  }, 2000); 
-  });
-    });
-
-    </script>
+    <script src="/js/cursor.js"></script>
 </body>
 </html>

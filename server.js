@@ -1,21 +1,25 @@
 const express = require("express");
-const app = express();
 const path = require("path");
+
+const app = express();
+const port = 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "transition.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-console.log(__dirname);
-app.get("/scroll", (req, res) => {
-  res.sendFile(path.join(__dirname, "scroll.html"));
+app.get("/works", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "works.html"));
 });
 app.get("/fluid", (req, res) => {
-  res.sendFile(path.join(__dirname, "fluid.html"));
+  res.sendFile(path.join(__dirname, "public", "fluid.html"));
 });
-const port = 3000; // You can specify any port you like
+
+app.get("/scroll", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "scroll.html"));
+});
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
