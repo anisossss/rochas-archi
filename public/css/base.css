@@ -393,7 +393,35 @@ z-index: 9999;
   margin-left: 2em;
 }
 
+.contact-wrapper{
+  background-color: #fff;
+  padding: 3%;
+  width: 80%;
+  margin-top: 10%;
+  margin: 10em auto;
 
+}
+.description
+{
+  width: 50%;
+  margin-left: 2em;
+  margin-top: 3em;
+}
+form{
+  margin-left: 2em;
+  margin-top: 5%;
+}
+form input{
+border-bottom: 1px solid #000;
+width: 90%;
+margin-bottom: 1.8em;
+}
+form input:focus{
+  outline: none;
+  }
+.submit .btn-text{
+  font-size: 25px;
+}
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
