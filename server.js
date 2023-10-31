@@ -12,6 +12,16 @@ app.get("/", (req, res) => {
 app.get("/works", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "/works.html"));
 });
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "/about.html"));
+});
+app.get("/recruitement", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "/recruitement.html"));
+});
+app.get("/contact", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "/contact.html"));
+});
+
 app.get("/fluid", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "/fluid.html"));
 });

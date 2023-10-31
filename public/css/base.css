@@ -59,24 +59,126 @@
   box-shadow: 0 0 900px rgba(0,0,0,1) inset;
   z-index: 999;
 }
+/*ABOUT*/
+.title{
+  font-size: 60px;
+  font-weight: bolder;
+}
+.subtitle{
+  font-size: 20px;
+  font-weight: bold;
+}
+.numbers{
+  font-size: 45px ;
+}
+.right-column-ex {
+  width: 600px; 
+}
+.right-column-pres {
+  width: 600px; 
+}
+.right-column {
+  display: flex;
+  width: 700px; /* Width of the viewport to show one image at a time */
+  height: 400px; /* Height of the viewport */
+  overflow: hidden;
+  position: relative;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+  transition: transform 0.3s; /* Add a smooth transition for scaling */
+}
+
+.right-column > div {
+  width: 600px; 
+  height: 400px; 
+  flex-shrink: 0; 
+  position: absolute;
+  transition: transform ease-in-out 1s; 
+}
+.list {
+  display: grid;
+  font-weight: 900;
+  font-size: 30px;
+  position: relative;
+  grid-auto-flow: row;
+  text-align: right;
+}
+
+
+.btn {
+  height:fit-content ;
+  margin: 20px auto;
+  border: none;
+  font-size: 36px;
+  position: relative;
+}
+.btn::before {
+  transition: all 0.3s ease-in-out;
+  content: "";
+  width: 50%;
+  height: 100%;
+  background: #F1F1F1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.btn .btn-text {
+  color: white;
+  mix-blend-mode: difference;
+}
+.btn:hover::before {
+  background: #F1F1F1;
+  width: 100%;
+}
+/*ABOUT*/
 
 /*WORKS*/
+h3{
+  font-weight: 300;
+}
 .body{
   height: 100%;
   background-color: #252525;
   overflow: scroll;
   overflow-x: hidden
-}.timeline {
+}
+
+
+.timeline {
   margin: auto;
   width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-.left-column, .right-column {
-  width: 450px;
+.paragraph{
+  width: 70%;
 }
+.right-column-team {
+    align-items: center;
+    text-align: center;
+    display: grid;
+  }
+.left-column-team {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.left-column {
+
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .timeline-item {
   cursor: pointer;
@@ -110,13 +212,131 @@
   z-index: 99;
   position: relative;
 }
-.number{
 
-}
 .bottom-left-text{
   font-size: 22px;
 text-transform: uppercase;
 }
+
+
+.container {
+  justify-content: center;
+margin-top: 15%;
+  width: 90%;
+  margin: 15em auto ;
+  justify-content: center;
+  background-color: #fff;
+  align-items: center;
+
+}
+.bottom-section{
+  justify-content: center;
+  align-items: center;
+}
+.top-section{
+  background-color: #fff;
+  padding: 3%;
+  display: flex;
+  width: 100%;
+justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding-top: 5%;
+text-align: right;
+  margin-bottom: 5%;
+}
+.pres-wrapper{
+  background-color: #fff;
+  padding: 3%;
+  display: flex;
+  width: 90%;
+justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 5%;
+}
+.experience-wrapper{
+  font-size: 15px;
+  background-color: #fff;
+  padding: 3%;
+  display: flex;
+  width: 80%;
+justify-content: space-between;
+  margin: auto;
+  align-items: center;
+  margin-bottom: 5%;
+  
+}
+.team-wrapper{
+  background-color: #fff;
+  padding: 3%;
+  width: 80%;
+justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  
+}
+
+.first-row, .second-row {
+  text-align: center;
+  width: 50%;
+}
+
+
+.team-right-column{
+  text-align: center;
+  font-size: larger;
+}
+.content{
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: auto; background-color: #fff;
+  padding: 3%;
+  display: flex;
+}
+.wrapper{
+  position: relative;
+}
+
+.wrapper .carousel {
+  white-space: nowrap;
+  font-size: 0;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  scroll-behavior: smooth;
+}
+
+.carousel.dragging{
+  cursor: grab;
+  scroll-behavior: auto;
+}
+.carousel.dragging img{
+  pointer-events: none;
+}
+.carousel img{
+  height:350px;
+  object-fit: cover;
+  user-select: none;
+  margin-left: 14px;
+}
+
+.carousel img:first-child{
+  margin-left: 0px;
+}
+@media screen and (max-width: 900px) {
+  .carousel img{
+    width: calc(100% / 2);
+  }
+}
+@media screen and (max-width: 550px) {
+  .carousel img{
+    width: 100%;
+  }
+}
+
+ 
 
 /*WORKS*/
 

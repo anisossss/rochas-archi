@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/base.css">
+  <title>Rochas Archi - About</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
+
+</head>
+
+<body class="body">
+  <div id="cursor"></div>
+  <div id="cursor-border"></div>
+  <div class="navbar" data-cursor="pointer">
+    <img src="/pictures/logo_arch.png" width="120" height="120" class="img" />
+    <div class="flex">
+      <a href="/works">All</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
+  <main>
+    <div class="container">
+      <!--TOP SECTION-->
+      <div class="top-section">
+        <div class="left-column">
+          <div class="list">
+            <button class="btn" onmouseover="slideImage(0)"><span class="btn-text">Présentation</span></button>
+            <button class="btn" onmouseover="slideImage(1)"><span class="btn-text">Expérience</span></button>
+            <button class="btn" onmouseover="slideImage(2)"><span class="btn-text">Equipe</span></button>
+
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="image">
+            <img src="/pictures/presentation.jpg" alt="img">
+          </div>
+          <div class="image">
+            <img src="/pictures/experience.webp" alt="img"  >
+          </div>
+          <div class="image">
+            <img src="/pictures/equipe.webp" alt="img"  >
+          </div>
+         
+        </div>
+      </div>
+      <!--TOP SECTION-->
+
+
+      <!--PRESENTATION-->
+      <div class="title">
+        <h1>Présentation</h1>
+      </div>
+      <div class="pres-wrapper">
+        <div class="left-column">
+          <div class="subtitle">
+
+            <h3>Communication<br> créative</h3>
+          </div>
+          <br>
+          <span>Nous accompagnons les acteurs de l’architecture,
+            de la construction et de l’immobilier dans la mise en valeur
+            et la communication de leurs projets en leur
+            proposant des solutions adaptées à leurs besoins spécifiques.
+          </span>
+        </div>
+        <div class="right-column-pres">
+          <video width="1000" height="600" controls>
+            <source src="https://www.pexels.com/video/people-crowding-a-busy-terminal-in-new-york-city-3217802"
+              type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+        </div>
+      </div>
+      <!--PRESENTATION-->
+
+
+
+      <!--EXPERIENCE-->
+
+      <div class="title">
+        <h1>Expérience
+        </h1>
+      </div>
+      <div class="experience-wrapper">
+
+        <div class="left-column">
+
+          <div class="first-row">
+            <div class="numbers">
+              <span id="projectCounter">0</span>
+
+            </div>
+            <div class="subtitle">
+              <h3>projets réalisés
+              </h3>
+            </div>
+          </div>
+          <br>
+
+          <div class="second-row">
+            <div class="numbers">
+              <span id="experienceCounter">0</span>
+
+            </div>
+            <div class="subtitle">
+
+              <h3>années d'expérience
+              </h3>
+            </div>
+
+          </div>
+        </div>
+        <div class="right-column-ex">
+          <div class="subtitle">
+
+            <span>Connaissance & Expertise
+            </span>
+          </div>
+          <br>
+          <p>Notre expertise est fondée sur l’expérience que
+            nous avons acquise tout au long de ces 20 dernières
+            années, avec plus de 1800 projets réalisés dans des
+            domaines variés tels que le commerce, la culture,
+            l’enseignement, les équipements, le génie-civil,
+            les hôtels et le tourisme, l’industrie, les mobilités,
+            le résidentiel, la santé, les sports et les
+            loisirs, le tertiaire, ou encore l’urbanisme.
+          </p>
+          <br>
+          <br>
+          <p>La pérennité de notre agence dans le monde
+            de l’architecture et de la construction nous offre
+            une meilleure compréhension des enjeux rencontrés
+            par vos équipes, tout particulièrement dans les
+            contextes spécifiques des concours
+            et des marchés publics.
+          </p>
+        </div>
+      </div>
+      <!--EXPERIENCE-->
+
+
+      <!--TEAM-->
+      <div class="title">
+        <span>Équipe
+        </span>
+      </div>
+      <div class="team-wrapper">
+     
+        <div class="left-column-team">
+          <div class="subtitle">
+            <span>Engagement & Complémentarité
+            </span>
+          </div>
+          <div class="top">
+            <div class="paragraph">
+              <br>
+              <p>Les architectes, infographistes, designers et développeurs qui composent notre
+                agence se distinguent particulièrement
+                par leur capacité d’écoute et de conseil, leur exigence et leur investissement.
+              </p>
+              <br>
+              <p>Cette pluridisciplinarité nous permet de concevoir et
+                de réaliser des solutions appropriées et qualitatives qui répondent
+                aux problématiques
+                variées que rencontrent nos clients pour la communication de leurs projets.
+              </p>
+            </div>
+            
+            
+            <div class="right-column-team">
+              <span id="countercollab" class="numbers">0</span>
+              <span class="subtitle">Collaborateurs</span>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="content">
+          <div class="wrapper">
+            
+            <div class="carousel">
+             
+              <img src="/pictures/member1.jpg" alt="img" draggable="false">
+            
+              <img src="/pictures/member2.jpg" alt="img" draggable="false">
+              <img src="/pictures/member3.jpg" alt="img" draggable="false">
+              <img src="/pictures/member1.jpg" alt="img" draggable="false">
+              <img src="/pictures/member2.jpg" alt="img" draggable="false">
+              <img src="/pictures/member3.jpg" alt="img" draggable="false">
+              <img src="/pictures/member1.jpg" alt="img" draggable="false">
+              <img src="/pictures/member2.jpg" alt="img" draggable="false">
+              <img src="/pictures/member3.jpg" alt="img" draggable="false">
+            </div>
+
+          </div>
+
+        </div>
+        </div>
+      </div>
+  </main>
+
+  <script>
+    
+  const images = document.querySelectorAll('.right-column .image');
+    const imageWidth = 700;
+    function slideImage(index) {
+      images.forEach((image, i) => {
+        if (i === index) {
+          image.style.transform = 'translateX(0); ';
+          image.style.transform = ' scale(1.5)';
+        } else {
+          image.style.transform = `translateX(${(i - index) * imageWidth}px)`;
+        
+        }
+      });
+    }
+  </script>
+  
+  <script src="/js/cursor.js"></script>
+  <script src="/js/gsap.js"></script>
+  <script src="/js/slider.js"></script>
+  <script src="/js/counters.js"></script>
+
+</body>
+
+</html>
