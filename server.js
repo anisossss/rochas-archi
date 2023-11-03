@@ -10,16 +10,16 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "/index.html"));
 });
 app.get("/works", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "/works.html"));
+  res.sendFile(path.join(__dirname, "public", "works", "/index.html"));
 });
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "/about.html"));
+  res.sendFile(path.join(__dirname, "public", "about", "/index.html"));
 });
 app.get("/recrutement", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "/recrutement.html"));
+  res.sendFile(path.join(__dirname, "public", "recrutement", "/index.html"));
 });
 app.get("/contact", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "/contact.html"));
+  res.sendFile(path.join(__dirname, "public", "contact", "/index.html"));
 });
 
 app.get("/fluid", (req, res) => {
