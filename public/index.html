@@ -8,7 +8,7 @@
   
     <link rel="stylesheet" type="text/css" href="/css/base.css">
 </head>
-<body class="antialiased font-serif bg-light dark:bg-dark text-black dark:text-light">
+<body class="antialiased font-serif bg-light dark:bg-dark text-black dark:text-light ">
     <div id="cursor"></div>
     <div id="cursor-border"></div>
     <div id="loader"
@@ -82,5 +82,32 @@
     <script src="/js/effect.js"></script>
     <script src="/js/ux.js"></script>
     <script src="/js/cursor.js"></script>
+    <script src="/js/wave.js"></script>
+    <script type="x-shader/x-vertex" id="vs">
+        attribute vec3 position;
+        varying vec2 vTexCoord;
+  
+        void main() {
+          vTexCoord = (position.xy + 1.0) * 0.5;
+          vTexCoord.y = 1.0 - vTexCoord.y;
+          gl_Position = vec4(position, 1.0);
+        }
+      </script>
+  
+      <script type="x-shader/x-fragment" id="fs">
+        precision mediump float;
+        uniform float time;
+        uniform sampler2D texture;
+        varying vec2 vTexCoord;
+  
+        float frequency = 0.01;
+        float amplitude = 0.01;
+  
+        void main() {
+          float distortion = sin(gl_FragCoord.x * frequency + time) * amplitude;
+          vec4 samplerColor = texture2D(texture, vec2(vTexCoord.x + distortion, vTexCoord.y + distortion * 0.5));
+          gl_FragColor = samplerColor;
+        }
+      </script>
 </body>
 </html>

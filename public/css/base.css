@@ -1,20 +1,35 @@
-
-
 @font-face {
-  font-family: 'butler';
-  src: url("/fonts/Butler.woff2") ;
+  font-family: "butler";
+  src: url("/fonts/Butler.woff2");
 }
 @font-face {
-  font-family: 'butlerLight';
-  src: url("/fonts/Butler-Light.woff2") ;
+  font-family: "butlerLight";
+  src: url("/fonts/Butler-Light.woff2");
 }
 @font-face {
-  font-family: 'butlerMedium';
-  src: url("/fonts/Butler-Medium.woff2") ;
+  font-family: "butlerMedium";
+  src: url("/fonts/Butler-Medium.woff2");
 }
 @font-face {
-  font-family: 'butlerBold';
-  src: url("/fonts/Butler-Bold.woff2") ;
+  font-family: "butlerBold";
+  src: url("/fonts/Butler-Bold.woff2");
+}
+@font-face {
+  font-family: "Eczar";
+  src: url("/fonts/Eczar-Bold.woff2");
+}
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/AlegreyaSans-Regular.woff2");
+}
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50em;
+  height: 50em;
+  transform: translate(-50%, -50%);
+  filter: brightness(1.25);
 }
 
 #cursor {
@@ -27,9 +42,8 @@
   border: #fff solid 1px;
   border-radius: 50%;
   pointer-events: none;
-  display: none; 
+  display: none;
   z-index: 999;
-  
 }
 
 #cursor-border {
@@ -45,10 +59,9 @@
   pointer-events: none;
   transition: top 0.15s ease-out, left 0.15s ease-out, width 0.15s ease-out,
     height 0.15s ease-out, background-color 0.15s ease-out;
-  z-index: 999;  mix-blend-mode: difference;
-
+  z-index: 999;
+  mix-blend-mode: difference;
 }
-
 
 .vignette {
   position: fixed;
@@ -56,26 +69,32 @@
   left: 0;
   width: 100%;
   height: 100%;
-  box-shadow: 0 0 900px rgba(0,0,0,1) inset;
+  box-shadow: 0 0 900px rgba(0, 0, 0, 1) inset;
   z-index: 999;
 }
+
 /*ABOUT*/
-.title{
+.title {
   font-size: 60px;
   font-weight: bolder;
+  color: #fff;
+  font-family: "Eczar";
 }
-.subtitle{
-  font-size: 20px;
+.subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Alegreya";
+}
+.numbers {
+  font-size: 75px;
+  font-family: "Alegreya";
   font-weight: bold;
 }
-.numbers{
-  font-size: 45px ;
-}
 .right-column-ex {
-  width: 600px; 
+  width: 600px;
 }
 .right-column-pres {
-  width: 600px; 
+  width: 600px;
 }
 .right-column {
   display: flex;
@@ -92,11 +111,11 @@
 }
 
 .right-column > div {
-  width: 600px; 
-  height: 400px; 
-  flex-shrink: 0; 
+  width: 600px;
+  height: 400px;
+  flex-shrink: 0;
   position: absolute;
-  transition: transform ease-in-out 1s; 
+  transition: transform ease-in-out 1s;
 }
 .list {
   display: grid;
@@ -107,9 +126,8 @@
   text-align: right;
 }
 
-
 .btn {
-  height:fit-content ;
+  height: fit-content;
   margin: 20px auto;
   border: none;
   font-size: 36px;
@@ -120,32 +138,32 @@
   content: "";
   width: 50%;
   height: 100%;
-  background: #F1F1F1;
+  background: #f1f1f1;
   position: absolute;
   top: 0;
   left: 0;
 }
 .btn .btn-text {
+  font-family: "Eczar";
   color: white;
   mix-blend-mode: difference;
 }
 .btn:hover::before {
-  background: #F1F1F1;
+  background: #f1f1f1;
   width: 100%;
 }
 /*ABOUT*/
 
 /*WORKS*/
-h3{
+h3 {
   font-weight: 300;
 }
-.body{
+.body {
   height: 100%;
   background-color: #252525;
   overflow: scroll;
-  overflow-x: hidden
+  overflow-x: hidden;
 }
-
 
 .timeline {
   margin: auto;
@@ -154,37 +172,39 @@ h3{
   justify-content: space-between;
   align-items: center;
 }
-.paragraph{
-  width: 70%;
+.paragraph {
+  font-family: "Alegreya";
+  font-size: 18px;
+}
+.paragraph-team {
+  width: 80%;
 }
 .right-column-team {
-    align-items: center;
-    text-align: center;
-    display: grid;
-  }
+  align-items: center;
+  text-align: center;
+  display: grid;
+}
 .left-column-team {
   width: 100%;
   align-items: center;
   justify-content: space-between;
 }
-.top{
+.top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .left-column {
-
   width: 400px;
   align-items: center;
   justify-content: center;
 }
 
-
 .timeline-item {
   cursor: pointer;
   display: block;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
 .timeline-item img:hover {
   opacity: 100%;
@@ -194,7 +214,6 @@ h3{
   max-width: 100%;
   transition: 0.5s ease-in-out;
   opacity: 30%;
-
 }
 
 .right-column .timeline-item {
@@ -203,99 +222,93 @@ h3{
 .left-column .timeline-item {
   margin-top: 300px;
 }
-.number-text-container{
-  opacity: 100% ;
+.number-text-container {
+  opacity: 100%;
   color: #fff;
   margin-top: -2em;
-  letter-spacing: .4em;
+  letter-spacing: 0.4em;
   line-height: 2;
   z-index: 99;
   position: relative;
 }
 
-.bottom-left-text{
+.bottom-left-text {
   font-size: 22px;
-text-transform: uppercase;
+  text-transform: uppercase;
 }
-
 
 .container {
   justify-content: center;
-margin-top: 15%;
+  margin-top: 15%;
   width: 90%;
-  margin: 15em auto ;
-  justify-content: center;
-  background-color: #fff;
-  align-items: center;
-
-}
-.bottom-section{
+  margin: 15em auto;
   justify-content: center;
   align-items: center;
 }
-.top-section{
-  background-color: #fff;
+.bottom-section {
+  justify-content: center;
+  align-items: center;
+}
+.top-section {
   padding: 3%;
   display: flex;
   width: 100%;
-justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
   padding-top: 5%;
-text-align: right;
+  text-align: right;
   margin-bottom: 5%;
 }
-.pres-wrapper{
-  background-color: #fff;
+.pres-wrapper {
   padding: 3%;
   display: flex;
   width: 90%;
-justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
+  color: #fff;
   margin-bottom: 5%;
 }
-.experience-wrapper{
+.experience-wrapper {
   font-size: 15px;
-  background-color: #fff;
   padding: 3%;
   display: flex;
   width: 80%;
-justify-content: space-between;
+  justify-content: space-between;
   margin: auto;
   align-items: center;
+  color: #fff;
   margin-bottom: 5%;
-  
 }
-.team-wrapper{
-  background-color: #fff;
+.team-wrapper {
+  color: #fff;
   padding: 3%;
   width: 80%;
-justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
-  
 }
 
-.first-row, .second-row {
+.first-row,
+.second-row {
   text-align: center;
   width: 50%;
 }
 
-
-.team-right-column{
+.team-right-column {
   text-align: center;
   font-size: larger;
 }
-.content{
+.content {
   align-items: center;
   justify-content: center;
   width: 80%;
-  margin: auto; background-color: #fff;
+  margin: auto;
   padding: 3%;
   display: flex;
 }
-.wrapper{
+.wrapper {
   position: relative;
 }
 
@@ -308,81 +321,79 @@ justify-content: space-between;
   scroll-behavior: smooth;
 }
 
-.carousel.dragging{
+.carousel.dragging {
   cursor: grab;
   scroll-behavior: auto;
 }
-.carousel.dragging img{
+.carousel.dragging img {
   pointer-events: none;
 }
-.carousel img{
-  height:350px;
+.carousel img {
+  height: 380px;
   object-fit: cover;
   user-select: none;
-  margin-left: 14px;
+  margin-left: 16px;
 }
 
-.carousel img:first-child{
+.carousel img:first-child {
   margin-left: 0px;
 }
 @media screen and (max-width: 900px) {
-  .carousel img{
+  .carousel img {
     width: calc(100% / 2);
   }
 }
 @media screen and (max-width: 550px) {
-  .carousel img{
+  .carousel img {
     width: 100%;
   }
 }
-
- 
 
 /*WORKS*/
 
 *,
 *::before,
 *::after {
-  font-family: 'butlerMedium';
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-.img{
+.img {
   position: relative;
   z-index: 2;
-  left:5%
+  left: 5%;
 }
 .wrapper {
   position: relative;
   height: 100%;
 }
-      #next {
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        transform: translate(-50%, 0%);
-          width: 700px; 
-      }
+#next {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 700px;
+}
 
 :root {
   -moz-tab-size: 4;
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
 }
 
 .navbar {
+  font-family: "Alegreya";
+  font-weight: 800;
   justify-content: space-between;
   width: 90%;
   position: fixed;
   display: flex;
-  height:10%;
-  top:10%;
+  height: 10%;
+  top: 10%;
   align-items: center;
-font-size:20px;
-margin: 0 auto;
-z-index: 9999;
-
+  font-size: 20px;
+  margin: 0 auto;
+  z-index: 9999;
 }
 .navbar a {
   color: #fff;
@@ -393,54 +404,50 @@ z-index: 9999;
   margin-left: 2em;
 }
 
-.contact-wrapper{
+.contact-wrapper {
   background-color: #fff;
   padding: 3%;
   width: 80%;
   margin-top: 10%;
   margin: 10em auto;
-
 }
-.description
-{
+.description {
   width: 50%;
   margin-left: 2em;
   margin-top: 3em;
 }
-form{
+form {
   margin-left: 2em;
   margin-top: 5%;
 }
-form input{
-border-bottom: 1px solid #000;
-width: 90%;
-margin-bottom: 1.8em;
+form input {
+  border-bottom: 1px solid #000;
+  width: 90%;
+  margin-bottom: 1.8em;
 }
-form input:focus{
+form input:focus {
   outline: none;
-  }
-.submit .btn-text{
+}
+.submit .btn-text {
   font-size: 25px;
 }
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
-}body {
-  
-  margin: 0;
-    overflow: hidden;
 }
-
+body {
+  margin: 0;
+  overflow: hidden;
+}
 
 hr {
   height: 0; /* 1 */
   color: inherit; /* 2 */
 }
 
-
 abbr[title] {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 b,
 strong {
@@ -451,13 +458,8 @@ code,
 kbd,
 samp,
 pre {
-  font-family:
-		ui-monospace,
-		SFMono-Regular,
-		Consolas,
-		'Liberation Mono',
-		Menlo,
-		monospace; /* 1 */
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo,
+    monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -531,7 +533,8 @@ Remove the inheritance of text transform in Edge and Firefox.
 */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
@@ -540,7 +543,7 @@ Correct the inability to style clickable types in iOS and Safari.
 */
 
 button,
-[type='button'] {
+[type="button"] {
   -webkit-appearance: button;
 }
 
@@ -669,7 +672,10 @@ ul {
  */
 
 html {
-  font-family: Gilroy, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: Gilroy, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji"; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -744,11 +750,13 @@ textarea {
   resize: vertical;
 }
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder,
+textarea::-moz-placeholder {
   color: #a1a1aa;
 }
 
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
   color: #a1a1aa;
 }
 
@@ -814,7 +822,8 @@ pre,
 code,
 kbd,
 samp {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 /**
@@ -851,10 +860,10 @@ video {
 }
 
 @font-face {
-  font-family: 'Juana';
+  font-family: "Juana";
 
-  src: url('/assets/fonts/JuanaRegularIt.woff2') format('woff2'),
-             url('/assets/fonts/JuanaRegularIt.woff') format('woff');
+  src: url("/assets/fonts/JuanaRegularIt.woff2") format("woff2"),
+    url("/assets/fonts/JuanaRegularIt.woff") format("woff");
 
   font-weight: normal;
 
@@ -864,10 +873,10 @@ video {
 }
 
 @font-face {
-  font-family: 'Juana';
+  font-family: "Juana";
 
-  src: url('/assets/fonts/JuanaRegular.woff2') format('woff2'),
-             url('/assets/fonts/JuanaRegular.woff') format('woff');
+  src: url("/assets/fonts/JuanaRegular.woff2") format("woff2"),
+    url("/assets/fonts/JuanaRegular.woff") format("woff");
 
   font-weight: normal;
 
@@ -877,7 +886,7 @@ video {
 }
 
 @font-face {
-  font-family: 'Gilroy';
+  font-family: "Gilroy";
 
   font-weight: 700;
 
@@ -885,8 +894,8 @@ video {
 
   font-display: swap;
 
-  src: url('/assets/fonts/GilroyBold.woff2') format('woff2'),
-             url('/assets/fonts/GilroyBold.woff') format('woff');
+  src: url("/assets/fonts/GilroyBold.woff2") format("woff2"),
+    url("/assets/fonts/GilroyBold.woff") format("woff");
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -898,29 +907,29 @@ video {
 /* Hide scrollbar for IE, Edge and Firefox */
 
 #content {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: 0px;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: 0px; /* Firefox */
 }
 
 /* slide nav */
 
 #slider-nav[data-current="1"] > span:nth-of-type(1),
-    #slider-nav[data-current="2"] > span:nth-of-type(2),
-    #slider-nav[data-current="3"] > span:nth-of-type(3),
-    #slider-nav[data-current="4"] > span:nth-of-type(4),
-    #slider-nav[data-current="5"] > span:nth-of-type(5),
-    #slider-nav[data-current="6"] > span:nth-of-type(6) {
-  background-color: #1D1D1D;
+#slider-nav[data-current="2"] > span:nth-of-type(2),
+#slider-nav[data-current="3"] > span:nth-of-type(3),
+#slider-nav[data-current="4"] > span:nth-of-type(4),
+#slider-nav[data-current="5"] > span:nth-of-type(5),
+#slider-nav[data-current="6"] > span:nth-of-type(6) {
+  background-color: #1d1d1d;
 }
 
 @media (prefers-color-scheme: dark) {
   #slider-nav[data-current="1"] > span:nth-of-type(1),
-        #slider-nav[data-current="2"] > span:nth-of-type(2),
-        #slider-nav[data-current="3"] > span:nth-of-type(3),
-        #slider-nav[data-current="4"] > span:nth-of-type(4),
-        #slider-nav[data-current="5"] > span:nth-of-type(5),
-        #slider-nav[data-current="6"] > span:nth-of-type(6) {
-    background-color: #EFE6E1;
+  #slider-nav[data-current="2"] > span:nth-of-type(2),
+  #slider-nav[data-current="3"] > span:nth-of-type(3),
+  #slider-nav[data-current="4"] > span:nth-of-type(4),
+  #slider-nav[data-current="5"] > span:nth-of-type(5),
+  #slider-nav[data-current="6"] > span:nth-of-type(6) {
+    background-color: #efe6e1;
   }
 }
 
@@ -1013,11 +1022,15 @@ video {
 }
 
 .font-sans {
-  font-family: Gilroy, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Gilroy, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 .font-serif {
-  font-family: Juana, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: Juana, ui-serif, Georgia, Cambria, "Times New Roman", Times,
+    serif;
 }
 
 .font-bold {
@@ -1116,17 +1129,17 @@ video {
 
 .object-contain {
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .object-cover {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .object-center {
   -o-object-position: center;
-     object-position: center;
+  object-position: center;
 }
 
 .opacity-0 {
@@ -1233,7 +1246,7 @@ video {
 }
 
 * {
-  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+  --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgba(59, 130, 246, 0.5);
@@ -1364,7 +1377,9 @@ video {
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .origin-bottom-left {
@@ -1380,7 +1395,8 @@ video {
 }
 
 .transition {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1402,14 +1418,16 @@ video {
 }
 
 @-webkit-keyframes ping {
-  75%, 100% {
+  75%,
+  100% {
     transform: scale(2);
     opacity: 0;
   }
 }
 
 @keyframes ping {
-  75%, 100% {
+  75%,
+  100% {
     transform: scale(2);
     opacity: 0;
   }
@@ -1417,95 +1435,99 @@ video {
 
 @-webkit-keyframes pulse {
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
 @keyframes pulse {
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
 @-webkit-keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
+    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
 
   50% {
     transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
+    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
 
   50% {
     transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
 @-webkit-keyframes leap {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-5%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
+    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
 
   50% {
     transform: translateY(5%);
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
 @keyframes leap {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-5%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
+    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
 
   50% {
     transform: translateY(5%);
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
 .animate-pulse {
   -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .animate-leap {
   -webkit-animation: leap 1s ease-in-out infinite;
-          animation: leap 1s ease-in-out infinite;
+  animation: leap 1s ease-in-out infinite;
 }
 
 .hover\:animate-pulse:hover {
   -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .focus\:animate-pulse:focus {
   -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .scroll-snap-y {
   -ms-scroll-snap-type: y mandatory;
-      scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
 }
 
 .scroll-snap-start {
@@ -1628,4 +1650,3 @@ video {
     font-size: 68%;
   }
 }
-
