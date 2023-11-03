@@ -405,25 +405,30 @@ h3 {
 }
 
 .contact-wrapper {
-  background-color: #fff;
   padding: 3%;
   width: 80%;
   margin-top: 10%;
+  color: #fff;
   margin: 10em auto;
 }
 .description {
   width: 50%;
   margin-left: 2em;
+  font-family: "Alegreya";
   margin-top: 3em;
+  font-size: 18px;
 }
 form {
   margin-left: 2em;
   margin-top: 5%;
 }
 form input {
-  border-bottom: 1px solid #000;
+  font-family: "Alegreya";
+  background: transparent;
+  border-bottom: 1px solid #ffffff;
   width: 90%;
   margin-bottom: 1.8em;
+  font-size: 18px;
 }
 form input:focus {
   outline: none;
