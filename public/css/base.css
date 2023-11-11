@@ -211,17 +211,17 @@ h3 {
 .work-item .tag {
   color: #fff;
   font-family: "Butler";
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 700;
   font-size: 18px;
-  letter-spacing: 20px;
+  letter-spacing: 5px;
   width: 70%;
 }
 
 .work-item .numbr {
   font-size: 15px !important;
   color: #ffffff80;
-  letter-spacing: 15px;
+  letter-spacing: 5px;
   font-family: "Butler";
 }
 .work-item img {
