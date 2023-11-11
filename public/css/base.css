@@ -199,8 +199,10 @@ h3 {
   align-items: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin-top: 10%;
+  margin-top: 15%;
+  width: 90%;
 }
+
 @media (max-width: 768px) {
   .works-timeline {
     grid-template-columns: 1fr;
@@ -224,8 +226,8 @@ h3 {
 }
 .work-item img {
   margin: auto;
-  width: 32em;
-  height: 18em;
+  width: 30em;
+  height: 16em;
   opacity: 50%;
   transition: all 0.5s ease-in-out;
   object-fit: cover;
@@ -235,10 +237,9 @@ h3 {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-.timeline-column-left {
-  margin-top: 40px;
-  background-color: #fff;
+.timeline-column-right {
 }
+
 /*timeline works*/
 
 .container {
@@ -456,7 +457,10 @@ form input:focus {
   margin-top: 2em;
 }
 .row-images img {
+  margin: auto;
+  object-fit: fill;
   margin-bottom: 3em;
+  width: 80%;
 }
 .top-wrapper {
   margin: 15% auto;

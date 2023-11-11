@@ -160,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create an image element
     const imgElement = document.createElement("img");
     imgElement.src = imageSrc;
+    imgElement.setAttribute("data-cursor", "pointer");
 
     // Append the image to the anchor element
     anchorElement.appendChild(imgElement);
