@@ -11,17 +11,22 @@ class Sketch {
     //this.renderer.setSize(this.width, this.height);
     this.renderer.setClearColor(0xeeeeee, 1);
     this.duration = opts.duration || 1;
-    this.debug = opts.debug || false
-    this.easing = opts.easing || 'easeInOut'
+    this.debug = opts.debug || false;
+    this.easing = opts.easing || "easeInOut";
 
     this.clicker = document.getElementById("scroller");
     this.container = document.getElementById("slider");
 
-    this.images = JSON.parse(this.container.getAttribute('data-images'));
+    this.images = JSON.parse(this.container.getAttribute("data-images"));
     this.width = this.container.offsetWidth;
     this.height = this.container.offsetHeight;
     this.container.appendChild(this.renderer.domElement);
-    this.container.children[0].classList.add('w-full', 'h-full', 'object-cover', 'object-center');
+    this.container.children[0].classList.add(
+      "w-full",
+      "h-full",
+      "object-cover",
+      "object-center"
+    );
     this.camera = new THREE.PerspectiveCamera(
       70,
       window.innerWidth / window.innerHeight,
@@ -35,7 +40,7 @@ class Sketch {
     this.textures = [];
 
     this.paused = true;
-    this.initiate(()=>{
+    this.initiate(() => {
       //console.log(this.textures);
       this.setupResize();
       this.settings();
@@ -43,41 +48,48 @@ class Sketch {
       this.resize();
       this.clickEvent();
       this.play();
-    })
+    });
   }
 
-  initiate(cb){
+  initiate(cb) {
     const promises = [];
     let that = this;
-    this.images.forEach((url,i)=>{
-      let promise = new Promise(resolve => {
-        that.textures[i] = new THREE.TextureLoader().load( url, resolve );
+    this.images.forEach((url, i) => {
+      let promise = new Promise((resolve) => {
+        that.textures[i] = new THREE.TextureLoader().load(url, resolve);
         that.textures[i].generateMipmaps = false;
         that.textures[i].minFilter = THREE.LinearFilter;
         that.textures[i].needsUpdate = true;
       });
       promises.push(promise);
-    })
+    });
 
     Promise.all(promises).then(() => {
       cb();
     });
   }
 
-  clickEvent(){
-    this.clicker.addEventListener('click',()=>{
+  clickEvent() {
+    this.clicker.addEventListener("click", () => {
       this.next();
     });
   }
   settings() {
     let that = this;
-    if(this.debug) this.gui = new dat.GUI();
-    this.settings = {progress:0.5};
+    if (this.debug) this.gui = new dat.GUI();
+    this.settings = { progress: 0.5 };
     // if(this.debug) this.gui.add(this.settings, "progress", 0, 1, 0.01);
-    Object.keys(this.uniforms).forEach((item)=> {
+    Object.keys(this.uniforms).forEach((item) => {
       this.settings[item] = this.uniforms[item].value;
-      if(this.debug) this.gui.add(this.settings, item, this.uniforms[item].min, this.uniforms[item].max, 0.01);
-    })
+      if (this.debug)
+        this.gui.add(
+          this.settings,
+          item,
+          this.uniforms[item].min,
+          this.uniforms[item].max,
+          0.01
+        );
+    });
   }
 
   setupResize() {
@@ -91,14 +103,16 @@ class Sketch {
     this.camera.aspect = this.width / this.height;
 
     // image cover
-    this.imageAspect = this.textures[0].image.height/this.textures[0].image.width;
-    let a1; let a2;
-    if(this.height/this.width>this.imageAspect) {
-      a1 = (this.width/this.height) * this.imageAspect ;
+    this.imageAspect =
+      this.textures[0].image.height / this.textures[0].image.width;
+    let a1;
+    let a2;
+    if (this.height / this.width > this.imageAspect) {
+      a1 = (this.width / this.height) * this.imageAspect;
       a2 = 1;
-    } else{
+    } else {
       a1 = 1;
-      a2 = (this.height/this.width) / this.imageAspect;
+      a2 = this.height / this.width / this.imageAspect;
     }
 
     this.material.uniforms.resolution.value.x = this.width;
@@ -106,9 +120,9 @@ class Sketch {
     this.material.uniforms.resolution.value.z = a1;
     this.material.uniforms.resolution.value.w = a2;
 
-    const dist  = this.camera.position.z;
+    const dist = this.camera.position.z;
     const height = 1;
-    this.camera.fov = 2*(180/Math.PI)*Math.atan(height/(2*dist));
+    this.camera.fov = 2 * (180 / Math.PI) * Math.atan(height / (2 * dist));
     this.plane.scale.x = this.camera.aspect;
     this.plane.scale.y = 1;
 
@@ -119,7 +133,7 @@ class Sketch {
     let that = this;
     this.material = new THREE.ShaderMaterial({
       extensions: {
-        derivatives: "#extension GL_OES_standard_derivatives : enable"
+        derivatives: "#extension GL_OES_standard_derivatives : enable",
       },
       side: THREE.DoubleSide,
       uniforms: {
@@ -138,12 +152,15 @@ class Sketch {
         radius: { type: "f", value: 0 },
         texture1: { type: "f", value: this.textures[0] },
         texture2: { type: "f", value: this.textures[1] },
-        displacement: { type: "f", value: new THREE.TextureLoader().load('/pictures/disp1.jpg') },
+        displacement: {
+          type: "f",
+          value: new THREE.TextureLoader().load("/pictures/disp1.jpg"),
+        },
         resolution: { type: "v4", value: new THREE.Vector4() },
       },
       // wireframe: true,
       vertexShader: this.vertex,
-      fragmentShader: this.fragment
+      fragmentShader: this.fragment,
     });
 
     this.geometry = new THREE.PlaneGeometry(1, 1, 2, 2);
@@ -160,25 +177,26 @@ class Sketch {
     this.render();
   }
 
-  next(){
-    if(this.isRunning) return;
+  next() {
+    if (this.isRunning) return;
     this.isRunning = true;
     let len = this.textures.length;
-    let nextTexture =this.textures[(this.current +1)%len];
+    let nextTexture = this.textures[(this.current + 1) % len];
     let sliderNav = document.getElementById("slider-nav");
     sliderNav.dataset.current = this.current + 1;
     this.material.uniforms.texture2.value = nextTexture;
     let tl = new TimelineMax();
-    tl.to(this.material.uniforms.progress,this.duration,{
-      value:1,
+    tl.to(this.material.uniforms.progress, this.duration, {
+      value: 1,
       ease: Power2[this.easing],
-      onComplete:()=>{
+      onComplete: () => {
         //console.log('FINISH');
-        this.current = (this.current +1)%len;
+        this.current = (this.current + 1) % len;
         this.material.uniforms.texture1.value = nextTexture;
         this.material.uniforms.progress.value = 0;
         this.isRunning = false;
-    }})
+      },
+    });
   }
 
   render() {
@@ -188,7 +206,7 @@ class Sketch {
     // this.material.uniforms.progress.value = this.settings.progress;
     //console.log(this.uniforms)
     //console.log(this.material.uniforms)
-    Object.keys(this.uniforms).forEach((item)=> {
+    Object.keys(this.uniforms).forEach((item) => {
       this.material.uniforms[item].value = this.settings[item];
     });
 

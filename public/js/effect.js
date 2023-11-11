@@ -34,12 +34,12 @@ const nextButton = document.getElementById("next-button");
 const slider = document.getElementById("slider");
 let currentImageIndex = 0;
 const images = [
-  "/pictures/salon2.jpg",
-  "/pictures/chambre_coucher3.jpg",
-  "/pictures/salon.jpg",
-  "/pictures/chambre_coucher1.jpg",
-  "/pictures/salon_vue1.jpg",
-  "/pictures/salon_vue3.jpg",
+  "/pictures/immeuble/embc2.webp",
+  "/pictures/immeuble/embc2.webp",
+  "/pictures/immeuble/embc2.webp",
+  "/pictures/immeuble/embc2.webp",
+  "/pictures/immeuble/embc2.webp",
+  "/pictures/immeuble/embc2.webp",
 ];
 
 // Function to update the displayed image

@@ -273,7 +273,7 @@ class WaveDistortion {
   }
 }
 
-const effect = new WaveDistortion("/pictures/salon2.jpg");
+const effect = new WaveDistortion("/pictures/immeuble/embc1.webp");
 
 effect.setSpeed(0.5);
 
