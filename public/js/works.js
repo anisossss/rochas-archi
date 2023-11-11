@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "/works/a_n",
     "/works/balzac",
     "/works/c_w",
-    "/works/careeblanc",
+    "/works/carreblanc",
     "/works/embc",
     "/works/f_m",
     "/works/grissa",
