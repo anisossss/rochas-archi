@@ -48,13 +48,13 @@ function updateImage() {
 }
 
 // Event listener for the previous button
-prevButton.addEventListener("click", () => {
+prevButton.addEventListener("mousewheel", () => {
   currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
   updateImage();
 });
 
 // Event listener for the next button
-nextButton.addEventListener("click", () => {
+nextButton.addEventListener("mousewheel", () => {
   currentImageIndex = (currentImageIndex + 1) % images.length;
   updateImage();
 });

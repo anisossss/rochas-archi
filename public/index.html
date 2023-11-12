@@ -31,6 +31,8 @@
         <div id="content" class="overflow-y-auto h-screen scroll-snap-y" >
             
             <div class="relative flex flex-col items-center md:h-screen scroll-snap-start  ">
+                <progress value="0" max="100"></progress>
+              
                 <div id="scroller" class="h-full max-w-full relative">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          height="100"
@@ -39,23 +41,35 @@
                          >
                         </svg>
                         <div class="vignette"></div>
+
                     <div id="slider"
                          class="inset-0 absolute"
                          data-images='[
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp",
-                         "/pictures/immeuble/embc1.webp"
+                         "/pictures/villa/a_b1.webp",
+                         "/pictures/villa/a_m1.webp",
+                         "/pictures/villa/balzac1.webp",
+                         "/pictures/villa/c_w1.webp",
+                         "/pictures/immeuble/embc2.webp",
+                         "/pictures/villa/f_m1.webp",
+                         "/pictures/immeuble/grissa1.webp",
+                         "/pictures/villa/h_b.webp",
+                         "/pictures/villa/i_s1.webp",
+                         "/pictures/immeuble/k_a1.jpg",
+                         "/pictures/immeuble/k_d1.webp",
+                         "/pictures/immeuble/kaiser1.webp",
+                         "/pictures/villa/m_b1.jpg",
+                         "/pictures/immeuble/m_g1.webp",
+                         "/pictures/immeuble/n_g1.webp",
+                         "/pictures/immeuble/r_g1.webp",
+                         "/pictures/villa/s_z.webp",
+                         "/pictures/industrie/showroom1.webp",
+                         "/pictures/immeuble/verde1.webp",
+                         "/pictures/immeuble/west1.webp",
+                         "/pictures/immeuble/wight.webp",
+                         "/pictures/villa/z_b_exterieur1.webp",
+                         "/pictures/immeuble/z_g1.webp",
+                         "/pictures/villa/z_s1.webp",
+                         "/pictures/villa/z_z_exterieur1.webp"
                          ]'
                     >
                     </div>
@@ -86,7 +100,15 @@
     
     </div>
    
+  <script>
+  const scrollHeight = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  );
   
+  window.addEventListener('scroll', (e) => document.querySelector('progress').value = window.pageYOffset / (scrollHeight - window.innerHeight) * 100)
+  </script>
     <script src="/js/three.js"></script>
     <script src="/js/gsap.js"></script>
     <script src="/js/sketch.js"></script>
@@ -94,31 +116,6 @@
     <script src="/js/ux.js"></script>
     <script src="/js/cursor.js"></script>
     <script src="/js/wave.js"></script>
-    <script type="x-shader/x-vertex" id="vs">
-        attribute vec3 position;
-        varying vec2 vTexCoord;
-  
-        void main() {
-          vTexCoord = (position.xy + 1.0) * 0.5;
-          vTexCoord.y = 1.0 - vTexCoord.y;
-          gl_Position = vec4(position, 1.0);
-        }
-      </script>
-  
-      <script type="x-shader/x-fragment" id="fs">
-        precision mediump float;
-        uniform float time;
-        uniform sampler2D texture;
-        varying vec2 vTexCoord;
-  
-        float frequency = 0.01;
-        float amplitude = 0.01;
-  
-        void main() {
-          float distortion = sin(gl_FragCoord.x * frequency + time) * amplitude;
-          vec4 samplerColor = texture2D(texture, vec2(vTexCoord.x + distortion, vTexCoord.y + distortion * 0.5));
-          gl_FragColor = samplerColor;
-        }
-      </script>
+   
 </body>
 </html>

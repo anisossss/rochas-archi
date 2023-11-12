@@ -12,15 +12,14 @@ class WaveDistortion {
 
   init(img) {
     this.initWebGL();
-
     const program = this.createProgram("vs", "fs");
     if (!program) return;
 
     const position = [];
-    const numSegments = 26;
+    const numSegments = 30;
     const radius = 1;
     for (let i = 0; i < numSegments; i++) {
-      const theta = (i / numSegments) * Math.PI * 6;
+      const theta = (i / numSegments) * Math.PI * 2;
       const x = Math.cos(theta) * radius;
       const y = Math.sin(theta) * radius;
       position.push(x, y, 0);
@@ -52,7 +51,7 @@ class WaveDistortion {
     );
 
     this.setImg(img);
-    // this.gl.lineWidth(100);
+    this.gl.lineWidth(0);
 
     this.start(
       (time) => {
