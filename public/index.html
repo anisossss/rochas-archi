@@ -27,8 +27,8 @@
         stroke: url(#image-pattern);
         stroke-width: 110;
         stroke-linecap: butt;
-        stroke-dasharray: 1800; /* Circumference of the circle (2 * π * radius) */
-        stroke-dashoffset: 1800; /* Start with a full circle */
+        stroke-dasharray: 1650; /* Circumference of the circle (2 * π * radius) */
+        stroke-dashoffset: 1650; /* Start with a full circle */
         transform-origin: center;
         transform: rotate(0deg);
       }
@@ -36,6 +36,8 @@
   </head>
   <body
     class="antialiased font-serif bg-light dark:bg-dark text-black dark:text-light"
+    class="antialiased font-serif bg-light dark:bg-dark text-black dark:text-light"
+    onscroll="handleScroll()"
   >
     <div id="cursor"></div>
     <div id="cursor-border"></div>
@@ -132,7 +134,7 @@
                     id="progress-circle"
                     cx="500"
                     cy="500"
-                    r="230"
+                    r="240"
                   ></circle>
                 </svg>
               </div>
@@ -160,7 +162,7 @@
     <script>
       // GSAP animation
       const progress = gsap.to("#progress-circle", {
-        duration: 5,
+        duration: 4,
         strokeDashoffset: 0,
         // ease: "power2.InOut",
         // paused: false,
