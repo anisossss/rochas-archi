@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-image: url("https://images.all-free-download.com/images/graphicwebp/nature_reserve_moor_forest_236670.webp");
+        background-size: cover;
+      }
+
+      #progress-container {
+        width: 1000px;
+        height: 1000px;
+      }
+
+      #progress-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      #progress-circle {
+        fill: none;
+        stroke: url(#image-pattern);
+        stroke-width: 100;
+        stroke-linecap: butt;
+        stroke-dasharray: 1759.25; /* Circumference of the circle (2 * π * radius) */
+        stroke-dashoffset: 1759.25; /* Start with a full circle */
+        transform-origin: center;
+        transform: rotate(-90deg); /* Start the progress bar from the top */
+      }
+
+      #image-pattern {
+        content: url("https://images.all-free-download.com/images/graphicwebp/nature_reserve_moor_forest_236670.webp");
+        animation: translateX 2s linear infinite; /* Add animation for translation */
+      }
+
+      @keyframes translateX {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(100%); /* Translate 100% to the right */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-container">
+      <svg id="progress-svg" viewBox="0 0 1000 1000">
+        <defs>
+          <pattern
+            id="image-pattern"
+            x="0"
+            y="0"
+            patternUnits="userSpaceOnUse"
+            height="100%"
+            width="200%"
+          >
+            <image
+              x="0"
+              y="0"
+              width="100%"
+              height="100%"
+              xlink:href="https://png.pngtree.com/background/20211217/original/pngtree-abstract-bg-picture-image_1596862.jpg"
+            ></image>
+          </pattern>
+        </defs>
+        <circle id="progress-circle" cx="500" cy="500" r="230"></circle>
+      </svg>
+    </div>
+
+    <script>
+      // GSAP animation
+      const progress = gsap.to("#progress-circle", {
+        duration: 2,
+        strokeDashoffset: 0,
+        ease: "power2.out",
+        paused: true, // Animation starts paused
+      });
+
+      // Simulate progress
+      function simulateProgress() {
+        progress.play(); // Start the animation
+      }
+
+      // Call the function to start the progress
+      simulateProgress();
+    </script>
+  </body>
+</html>

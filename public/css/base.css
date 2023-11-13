@@ -156,6 +156,7 @@ h3 {
 }
 .left-column-about {
   width: 60%;
+  margin-right: 6em;
 }
 .paragraph {
   font-family: "Assistant";
