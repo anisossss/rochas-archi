@@ -4,20 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
       body {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background-image: url("https://images.all-free-download.com/images/graphicwebp/nature_reserve_moor_forest_236670.webp");
-        background-size: cover;
+        margin: auto;
       }
-
       #progress-container {
-        width: 1000px;
-        height: 1000px;
+        width: 1200px;
+        height: 1200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-110%, -50%);
       }
 
       #progress-svg {
@@ -28,26 +26,12 @@
       #progress-circle {
         fill: none;
         stroke: url(#image-pattern);
-        stroke-width: 100;
+        stroke-width: 110;
         stroke-linecap: butt;
-        stroke-dasharray: 1759.25; /* Circumference of the circle (2 * π * radius) */
-        stroke-dashoffset: 1759.25; /* Start with a full circle */
+        stroke-dasharray: 1650;
+        stroke-dashoffset: -100;
         transform-origin: center;
-        transform: rotate(-90deg); /* Start the progress bar from the top */
-      }
-
-      #image-pattern {
-        content: url("https://images.all-free-download.com/images/graphicwebp/nature_reserve_moor_forest_236670.webp");
-        animation: translateX 2s linear infinite; /* Add animation for translation */
-      }
-
-      @keyframes translateX {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(70%); /* Translate 100% to the right */
-        }
+        transform: rotate(0deg);
       }
     </style>
   </head>
@@ -57,15 +41,11 @@
         <defs>
           <pattern
             id="image-pattern"
-            x="0"
-            y="0"
             patternUnits="userSpaceOnUse"
             height="100%"
             width="200%"
           >
             <image
-              x="0"
-              y="0"
               width="100%"
               height="100%"
               xlink:href="https://png.pngtree.com/background/20211217/original/pngtree-abstract-bg-picture-image_1596862.jpg"
@@ -77,21 +57,39 @@
     </div>
 
     <script>
-      // GSAP animation
-      const progress = gsap.to("#progress-circle", {
-        duration: 2,
-        strokeDashoffset: 0,
-        ease: "power2.out",
-        paused: true, // Animation starts paused
-      });
+      // Function to animate the progress circle
+      function animateProgressCircle() {
+        const progressCircle = document.getElementById("progress-circle");
+        const circumference = progressCircle.getTotalLength();
 
-      // Simulate progress
-      function simulateProgress() {
-        progress.play(); // Start the animation
+        progressCircle.style.strokeDasharray = circumference;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        gsap.to(progressCircle, {
+          strokeDashoffset: 0,
+          duration: 2,
+          scrub: true,
+
+          ease: "power2.inOut",
+        });
       }
 
-      // Call the function to start the progress
-      simulateProgress();
+      // Check if GSAP and ScrollTrigger are loaded
+      if (gsap && gsap.registerPlugin && ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Trigger the animation when #progress-container enters the viewport
+        ScrollTrigger.create({
+          markers: true,
+          trigger: "#progress-container",
+          start: "top 80%", // Adjust this threshold as needed
+          onEnter: () => {
+            animateProgressCircle();
+          },
+        });
+      } else {
+        console.log("GSAP or ScrollTrigger not loaded.");
+      }
     </script>
   </body>
 </html>
