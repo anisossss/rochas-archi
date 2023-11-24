@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr" class="hmax-md:text-smaller hmax-sm:text-smallest">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rochas Architecte</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/css/base.css" />
-    <style>
-      #progress-container {
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rochas Architecte</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/base.css" />
+  <style>
+#progress {
+  width: 0%;
+}
+#progress-container {
         width: 1200px;
         height: 1200px;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-110%, -50%);
+        transform: translate(-50%, -50%);
       }
 
       #progress-svg {
@@ -28,50 +31,43 @@
         stroke: url(#image-pattern);
         stroke-width: 110;
         stroke-linecap: butt;
-        stroke-dasharray: 1650;
-        stroke-dashoffset: -100;
         transform-origin: center;
-        transform: rotate(0deg);
+        /* transform: rotate(-90deg); */
       }
-    </style>
-  </head>
-  <body>
-    <div id="cursor"></div>
-    <div id="cursor-border"></div>
-    <div
-      id="loader"
-      class="z-50 inset-0 bg-light dark:bg-dark transition duration-300 flex items-center justify-center pointer-events-none"
-      data-hide="opacity-0"
-    ></div>
-    <div class="navbar" data-cursor="pointer">
-      <a href="/">
-        <img
-          src="/pictures/logo_arch.png"
-          width="120"
-          height="120"
-          class="img"
-        />
-      </a>
-      <div class="flex">
-        <a href="/works">All</a>
-        <a href="/about">About</a>
-      </div>
-    </div>
-    <main>
-      <div id="content" class="overflow-y-auto">
-        <div class="relative flex flex-col items-center md:h-screen">
-          <div id="scroller" class="h-full max-w-full relative">
-            <svg
-              height="100"
-              width="1920"
-              class="mx-auto w-full h-auto md:h-full md:w-auto object-contain object-center"
-            ></svg>
-            <div class="vignette"></div>
+  </style>
+</head>
 
-            <div
-              id="slider"
-              class="inset-0 absolute"
-              data-images='[
+<body class="antialiased font-serif bg-light dark:bg-dark text-black dark:text-light">
+  <div id="cursor"></div>
+  <div id="cursor-border"></div>
+
+  <div class="navbar" data-cursor="pointer">
+    <a href="/">
+      <img src="/pictures/logo_arch.png" width="120" height="120" class="img" />
+    </a>
+    <div class="flex">
+      <a href="/works">All</a>
+      <a href="/about">About</a>
+
+    </div>
+
+  </div>
+  </div>
+
+  <main>
+    <div id="content" class="overflow-y-auto h-screen scroll-snap-y">
+
+      <div class="relative flex flex-col items-center md:h-screen scroll-snap-start">
+
+        <div id="scroller" class="h-full max-w-full relative">
+          <svg xmlns="http://www.w3.org/2000/svg" height="100" width="1920"
+            class="mx-auto w-full h-auto md:h-full md:w-auto object-contain object-center"></svg>
+
+          <div class="vignette">
+
+          </div>
+
+          <div class="inset-0 absolute" id="slider" data-images='[
                 "/pictures/villa/a_b1.webp",
                 "/pictures/villa/a_m1.webp",
                          "/pictures/villa/balzac1.webp",
@@ -97,74 +93,98 @@
                          "/pictures/immeuble/z_g1.webp",
                          "/pictures/villa/z_s1.webp",
                          "/pictures/villa/z_z_exterieur1.webp"
-                         ]'
-            ></div>
-            <div
-              id="slider-nav"
-              data-current="0"
-              class="flex flex-col fixed top-1/2 right-4 md:right-7 transform -translate-y-1/2"
-            >
-              <div id="progress-container">
-                <svg id="progress-svg" viewBox="0 0 1000 1000">
-                  <defs>
-                    <pattern
-                      id="image-pattern"
-                      patternUnits="userSpaceOnUse"
-                      height="100%"
-                      width="100%"
-                      r="240"
-                    >
-                      <image
-                        width="100%"
-                        height="100%"
-                        xlink:href="/pictures/villa/a_b1.webp"
-                      ></image>
-                    </pattern>
-                  </defs>
-                  <circle
-                    id="progress-circle"
-                    cx="500"
-                    cy="500"
-                    r="240"
-                  ></circle>
-                </svg>
+                         ]'>
+            <div style="position: absolute; z-index: 999">
+              <hr style="position:absolute; top:51%; left:12%; height:2px; width:22%; ">
+              </hr>
+              <button id="prev_btn"
+                style="position: absolute; top: 50%; left: 5%; font-size: 14px; outline:none ; font-weight: 500; letter-spacing: 3px;">
+                PREV
+              </button>
+              <button id="next_btn"
+                style="position: absolute; top: 50%; right: 5%; font-size: 14px;outline:none ; font-weight: 500; letter-spacing: 3px;">
+                NEXT
+              </button>
+              <hr style="position:absolute; top:51%; right:12%; height:3px; width:22%; ">
+              </hr>
+              <div
+                style="position: absolute; bottom: 8%; right: 12%; display: flex; align-items: center; width: 7%; justify-content: space-evenly;">
+                <span id="current-slider">01</span>
+                <div id="slider-progress" style="background-color: grey; width: 30px; height: 1px; position: relative;">
+                  <div id="progress" style="position: absolute; left: 0; height: 100%; background-color: white;"></div>
+                </div>
+                <span>25</span>
               </div>
+
+              <div id="slider-nav" data-current="0"
+                class="flex flex-col fixed top-1/2 right-4 md:right-7 transform -translate-y-1/2"></div>
+                <div id="progress-container">
+                  <svg id="progress-svg" viewBox="0 0 1000 1000">
+                    <defs>
+                      <pattern
+                        id="image-pattern"
+                        patternUnits="userSpaceOnUse"
+                        height="100%"
+                        width="100%"
+                        r="240"
+                        x="0"
+                        y="0"
+                      >
+                        <image
+                          width="100%"
+                          height="100%"
+                          xlink:href="/pictures/villa/a_b1.webp"
+                        ></image>
+                      </pattern>
+                    </defs>
+                    <circle
+                      id="progress-circle"
+                      cx="500"
+                      cy="500"
+                      r="240"
+                    ></circle>
+                  </svg>
+                </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+  </main>
 
-    <div id="data-trigger-scroller"></div>
+  <div id="data-trigger-scroller"></div>
 
-    <script src="/js/three.js"></script>
-    <script src="/js/sketch.js"></script>
-    <script src="/js/effect.js"></script>
-    <script src="/js/ux.js"></script>
-    <script src="/js/cursor.js"></script>
-    <script>
-      function animateProgressCircle() {
-        const progressCircle = document.getElementById("progress-circle");
-        const circumference = progressCircle.getTotalLength();
+  <script src="/js/three.js"></script>
+  <script src="/js/sketch.js"></script>
+  <script src="/js/effect.js"></script>
+  <script src="/js/ux.js"></script>
+  <script src="/js/cursor.js"></script>
+  <script>
+    function animateProgressCircle() {
+      const progressCircle = document.getElementById("progress-circle");
+      const patternImage = document.querySelector("#image-pattern image");
+      const slider = document.getElementById("slider");
+      const images = JSON.parse(slider.getAttribute("data-images"));
 
-        progressCircle.style.strokeDasharray = circumference;
-        progressCircle.style.strokeDashoffset = circumference;
+      let imageIndex = 0;
+      patternImage.setAttribute("xlink:href", images[imageIndex]);
 
-        gsap.to(progressCircle, {
-          strokeDashoffset: 0,
-          duration: 2,
-          ease: "power2.inOut",
-        });
-      }
+      const circumference = progressCircle.getTotalLength();
 
-      ScrollTrigger.create({
-        markers: true,
-        start: "top 30%",
-        end: "bottom 0",
-        onEnter: () => {
-          animateProgressCircle();
+      progressCircle.style.strokeDasharray = circumference;
+      progressCircle.style.strokeDashoffset = circumference;
+
+      const tl = gsap.timeline({
+        defaults: { duration: 2, ease: "power2.inOut" },
+        onComplete: () => {
+          imageIndex = (imageIndex + 1) % images.length;
+          patternImage.setAttribute("xlink:href", images[imageIndex]);
+          tl.restart();
         },
       });
-    </script>
-  </body>
+      tl.to(progressCircle, { strokeDashoffset: 0 });
+      tl.play();
+    }
+    animateProgressCircle();
+  </script>
+</body>
+
 </html>

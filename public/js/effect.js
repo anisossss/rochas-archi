@@ -1,6 +1,5 @@
 let sketch = new Sketch({
   duration: 1.5,
-  debug: false,
   easing: "easeIn",
   uniforms: {
     width: { value: 0.5, type: "f", min: 0, max: 10 },
@@ -29,35 +28,3 @@ x = smoothstep(.0, 1.0, (x * 2.0 + p.x - 1.0));
 		}
 	`,
 });
-const prevButton = document.getElementById("prev-button");
-const nextButton = document.getElementById("next-button");
-const slider = document.getElementById("slider");
-let currentImageIndex = 0;
-const images = [
-  "/pictures/immeuble/embc2.webp",
-  "/pictures/immeuble/embc2.webp",
-  "/pictures/immeuble/embc2.webp",
-  "/pictures/immeuble/embc2.webp",
-  "/pictures/immeuble/embc2.webp",
-  "/pictures/immeuble/embc2.webp",
-];
-
-// Function to update the displayed image
-function updateImage() {
-  slider.style.backgroundImage = `url(${images[currentImageIndex]})`;
-}
-
-// Event listener for the previous button
-prevButton.addEventListener("mousewheel", () => {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  updateImage();
-});
-
-// Event listener for the next button
-nextButton.addEventListener("mousewheel", () => {
-  currentImageIndex = (currentImageIndex + 1) % images.length;
-  updateImage();
-});
-
-// Initialize the image
-updateImage();

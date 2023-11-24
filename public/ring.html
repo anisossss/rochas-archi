@@ -57,7 +57,6 @@
     </div>
 
     <script>
-      // Function to animate the progress circle
       function animateProgressCircle() {
         const progressCircle = document.getElementById("progress-circle");
         const circumference = progressCircle.getTotalLength();
@@ -68,21 +67,18 @@
         gsap.to(progressCircle, {
           strokeDashoffset: 0,
           duration: 2,
-          scrub: true,
-
           ease: "power2.inOut",
         });
       }
 
-      // Check if GSAP and ScrollTrigger are loaded
+      gsap.registerPlugin(ScrollTrigger);
       if (gsap && gsap.registerPlugin && ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Trigger the animation when #progress-container enters the viewport
         ScrollTrigger.create({
           markers: true,
-          trigger: "#progress-container",
-          start: "top 80%", // Adjust this threshold as needed
+          start: "top 80%",
+          end: "top 55%",
+          immediateRender: false,
+          trigger: "body",
           onEnter: () => {
             animateProgressCircle();
           },

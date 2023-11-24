@@ -2,44 +2,40 @@ var uxjs = uxjs || {};
 
 uxjs.scroller = {
   init: function () {
-    this.triggerClick();
+    this.triggerScroll();
+    this.bindButtons();
   },
-  triggerClick: function () {
+  bindButtons: function () {
+    var nextButton = document.querySelector("#next_btn");
+    var prevButton = document.querySelector("#prev_btn");
+
+    nextButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      sketch.next();
+    });
+
+    prevButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      sketch.prev();
+    });
+  },
+  triggerScroll: function () {
     var scrollZone = document.querySelector("#scroller");
     var slider = document.querySelector("#slider");
-    var scrollerTrigger = document.querySelector("#data-trigger-scroller");
-
-    if (!scrollZone || !slider || !scrollerTrigger) {
-      return false;
-    }
 
     scrollZone.addEventListener("wheel", triggerIt, true);
     slider.addEventListener("contextmenu", (event) => event.preventDefault());
+
     function triggerIt(e) {
       e.preventDefault();
-      scrollZone.click();
+      if (e.deltaY > 0) {
+        sketch.next();
+      } else {
+        sketch.prev();
+      }
     }
   },
 };
-
-uxjs.domLoaded = {
-  init: function () {
-    this.removeSpinner();
-  },
-  removeSpinner: function () {
-    var loader = document.querySelector("#loader");
-    window.addEventListener("load", handleRemove);
-    function handleRemove() {
-      loader.classList.add("opacity-0");
-    }
-  },
-};
-
-/**
- * DOM ready ?
- *
- * @param {Function} fn Callback.
- */
 function isDomReady(fn) {
   if (typeof fn !== "function") {
     return;
@@ -57,5 +53,4 @@ function isDomReady(fn) {
 
 isDomReady(function () {
   uxjs.scroller.init();
-  uxjs.domLoaded.init();
 });

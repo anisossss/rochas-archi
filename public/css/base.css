@@ -47,7 +47,10 @@
   box-shadow: 0 0 900px rgba(0, 0, 0, 1) inset;
   z-index: 999;
 }
-
+.zoom {
+  transform: scale(2); /* Adjust scale value as needed */
+  transition: transform 0.3s ease-in-out; /* Adjust time as needed */
+}
 /*ABOUT*/
 .title {
   font-size: 60px;
@@ -487,8 +490,8 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 body {
-  height: 105vh;
   margin: 0;
+  overflow: hidden;
 }
 
 hr {
@@ -921,28 +924,6 @@ video {
 #content {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: 0px; /* Firefox */
-}
-
-/* slide nav */
-
-#slider-nav[data-current="1"] > span:nth-of-type(1),
-#slider-nav[data-current="2"] > span:nth-of-type(2),
-#slider-nav[data-current="3"] > span:nth-of-type(3),
-#slider-nav[data-current="4"] > span:nth-of-type(4),
-#slider-nav[data-current="5"] > span:nth-of-type(5),
-#slider-nav[data-current="6"] > span:nth-of-type(6) {
-  background-color: #1d1d1d;
-}
-
-@media (prefers-color-scheme: dark) {
-  #slider-nav[data-current="1"] > span:nth-of-type(1),
-  #slider-nav[data-current="2"] > span:nth-of-type(2),
-  #slider-nav[data-current="3"] > span:nth-of-type(3),
-  #slider-nav[data-current="4"] > span:nth-of-type(4),
-  #slider-nav[data-current="5"] > span:nth-of-type(5),
-  #slider-nav[data-current="6"] > span:nth-of-type(6) {
-    background-color: #efe6e1;
-  }
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {

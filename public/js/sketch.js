@@ -8,15 +8,11 @@ class Sketch {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.renderer.setPixelRatio(window.devicePixelRatio);
-    //this.renderer.setSize(this.width, this.height);
-    this.renderer.setClearColor(0xeeeeee, 1);
     this.duration = opts.duration || 1;
     this.debug = opts.debug || false;
     this.easing = opts.easing || "easeInOut";
-
-    this.clicker = document.getElementById("scroller");
+    // this.clicker = document.getElementById("scroller");
     this.container = document.getElementById("slider");
-
     this.images = JSON.parse(this.container.getAttribute("data-images"));
     this.width = this.container.offsetWidth;
     this.height = this.container.offsetHeight;
@@ -41,12 +37,11 @@ class Sketch {
 
     this.paused = true;
     this.initiate(() => {
-      //console.log(this.textures);
       this.setupResize();
       this.settings();
       this.addObjects();
       this.resize();
-      this.clickEvent();
+      // this.clickEvent();
       this.play();
     });
   }
@@ -75,21 +70,7 @@ class Sketch {
     });
   }
   settings() {
-    let that = this;
-    if (this.debug) this.gui = new dat.GUI();
     this.settings = { progress: 0.5 };
-    // if(this.debug) this.gui.add(this.settings, "progress", 0, 1, 0.01);
-    Object.keys(this.uniforms).forEach((item) => {
-      this.settings[item] = this.uniforms[item].value;
-      if (this.debug)
-        this.gui.add(
-          this.settings,
-          item,
-          this.uniforms[item].min,
-          this.uniforms[item].max,
-          0.01
-        );
-    });
   }
 
   setupResize() {
@@ -130,7 +111,6 @@ class Sketch {
   }
 
   addObjects() {
-    let that = this;
     this.material = new THREE.ShaderMaterial({
       extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable",
@@ -152,13 +132,8 @@ class Sketch {
         radius: { type: "f", value: 0 },
         texture1: { type: "f", value: this.textures[0] },
         texture2: { type: "f", value: this.textures[1] },
-        displacement: {
-          type: "f",
-          value: new THREE.TextureLoader().load("/pictures/disp1.jpg"),
-        },
         resolution: { type: "v4", value: new THREE.Vector4() },
       },
-      // wireframe: true,
       vertexShader: this.vertex,
       fragmentShader: this.fragment,
     });
@@ -171,12 +146,73 @@ class Sketch {
   stop() {
     this.paused = true;
   }
-
   play() {
     this.paused = false;
     this.render();
+
+    // Initialize progress bar direction and transition duration
+    let isForward = true;
+    let transitionDuration = 4;
+
+    // Function to animate the progress bar
+    const animateProgressBar = (isForward) => {
+      transitionDuration = isForward ? 4 : 0.2;
+      const progressElement = document.getElementById("progress");
+      progressElement.style.transition = `width ${transitionDuration}s linear`;
+      progressElement.style.width = isForward ? "100%" : "0%";
+    };
+
+    // this interval to cause the bar to reload to start value without delay
+    setInterval(() => {
+      if (!isForward) {
+        const progressElement = document.getElementById("progress");
+        progressElement.style.transition = "ease-in-out 4s";
+        progressElement.style.width = "0%";
+      }
+    }, transitionDuration * 100);
+
+    // Initial call to animateProgressBar to animate the progress bar forward
+    animateProgressBar(isForward);
+
+    this.interval = setInterval(() => {
+      this.next();
+
+      // Swap direction and reset progress bar every transition
+      isForward = !isForward;
+
+      const progressElement = document.getElementById("progress");
+      progressElement.style.width = isForward ? "0%" : "100%";
+
+      setTimeout(() => {
+        animateProgressBar(isForward);
+      }, 20);
+    }, 4000);
   }
 
+  stop() {
+    this.paused = true;
+
+    // Stops the image rotation
+    clearInterval(this.interval);
+  }
+  prev() {
+    if (this.isRunning) return;
+    this.isRunning = true;
+    let len = this.textures.length;
+    let prevTexture = this.textures[(this.current - 1 + len) % len];
+    this.material.uniforms.texture2.value = prevTexture;
+    let tl = new TimelineMax();
+    tl.to(this.material.uniforms.progress, this.duration, {
+      value: 1,
+      ease: Power2[this.easing],
+      onComplete: () => {
+        this.current = (this.current - 1 + len) % len;
+        this.material.uniforms.texture1.value = prevTexture;
+        this.material.uniforms.progress.value = 0;
+        this.isRunning = false;
+      },
+    });
+  }
   next() {
     if (this.isRunning) return;
     this.isRunning = true;
@@ -184,13 +220,19 @@ class Sketch {
     let nextTexture = this.textures[(this.current + 1) % len];
     let sliderNav = document.getElementById("slider-nav");
     sliderNav.dataset.current = this.current + 1;
+
+    // update slider counter
+    document.getElementById("current-slider").textContent = (
+      "0" +
+      (this.current + 1)
+    ).slice(-2);
+
     this.material.uniforms.texture2.value = nextTexture;
     let tl = new TimelineMax();
     tl.to(this.material.uniforms.progress, this.duration, {
       value: 1,
       ease: Power2[this.easing],
       onComplete: () => {
-        //console.log('FINISH');
         this.current = (this.current + 1) % len;
         this.material.uniforms.texture1.value = nextTexture;
         this.material.uniforms.progress.value = 0;
@@ -203,16 +245,11 @@ class Sketch {
     if (this.paused) return;
     this.time += 0.05;
     this.material.uniforms.time.value = this.time;
-    // this.material.uniforms.progress.value = this.settings.progress;
-    //console.log(this.uniforms)
-    //console.log(this.material.uniforms)
+
     Object.keys(this.uniforms).forEach((item) => {
       this.material.uniforms[item].value = this.settings[item];
     });
 
-    // this.camera.position.z = 3;
-    // this.plane.rotation.y = 0.4*Math.sin(this.time)
-    // this.plane.rotation.x = 0.5*Math.sin(0.4*this.time)
     requestAnimationFrame(this.render.bind(this));
     this.renderer.render(this.scene, this.camera);
   }
