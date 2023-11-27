@@ -5,9 +5,9 @@ var rad = Math.PI / 180;
 function AnimateBaseFrequency() {
   bfx = 0.01;
   bfy = 0.01;
-  frames += 0.3;
-  bfx += 0.03 * Math.cos(frames * rad);
-  bfy += 0.03 * Math.cos(frames * rad);
+  frames += 0.4;
+  bfx += 0.003 * Math.cos(frames * rad);
+  bfy += 0.003 * Math.cos(frames * rad);
 
   bf = bfx.toString() + " " + bfy.toString();
   img.setAttributeNS(null, "baseFrequency", bf);

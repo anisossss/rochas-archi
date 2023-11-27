@@ -7,6 +7,30 @@
   src: url("/fonts/Assistant.woff2");
 }
 
+#top-animated {
+  animation: slide-in 1s ease-out both;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#animated {
+  animation: slide-in 1s ease-out both;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 #cursor {
   position: fixed;
   top: -30px;

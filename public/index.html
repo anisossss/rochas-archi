@@ -53,7 +53,7 @@
   </div>
   </div>
 
-  <main>
+  <main id="top-animated">
     <div id="content" class="overflow-y-auto h-screen scroll-snap-y">
 
       <div class="relative flex flex-col items-center md:h-screen scroll-snap-start">
@@ -119,11 +119,10 @@
                 class="flex flex-col fixed top-1/2 right-4 md:right-7 transform -translate-y-1/2"></div>
                 <div id="progress-container">
                   <svg id="progress-svg" viewBox="0 0 1000 1000">
-                  
                     <defs>
                       <filter id="displacementFilter">
-                        <feTurbulence type="turbulence" baseFrequency="0.01 .1"
-                            numOctaves="1" result="turbulence" seed="13"/>
+                        <feTurbulence type="turbulence" 
+                            numOctaves="1" result="turbulence" seed="50"/>
                             <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="20" xChannelSelector="B" yChannelSelector="R"/>
 
                       </filter>
