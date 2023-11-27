@@ -104,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "31",
     "32",
     "33",
-    "34",
   ];
   const linksArray = [
     "/works/a_b",
@@ -138,8 +137,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "/works/wight",
     "/works/wight",
     "/works/z_b",
-    "/works/z_g",
     "/works/z_s",
+    "/works/z_s",
+    "/works/z_s",
+    "/works/z_z",
     "/works/z_z",
   ];
 
@@ -186,7 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   const tagNumbers = document.querySelectorAll(".tag-number");
 
-  // Animate parent divs with ScrollTrigger
   tagNumbers.forEach((tagNumber) => {
     gsap.from(tagNumber, {
       scrollTrigger: {
@@ -194,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
         start: "center 90%",
         end: "center 40%",
         scrub: 1.5,
-        markers: true,
       },
       y: 120,
     });

@@ -44,13 +44,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  box-shadow: 0 0 900px rgba(0, 0, 0, 1) inset;
+  box-shadow: 0 0 5000px rgba(0, 0, 0, 1) inset,
+    0 0 5000px rgba(0, 0, 0, 1) inset;
   z-index: 999;
 }
-.zoom {
-  transform: scale(2); /* Adjust scale value as needed */
-  transition: transform 0.3s ease-in-out; /* Adjust time as needed */
-}
+
 /*ABOUT*/
 .title {
   font-size: 60px;
@@ -440,50 +438,88 @@ form input:focus {
 }
 
 /*SINGLE PROJECT*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
 .project-wrapper {
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: #fff;
   margin: auto;
 }
-.row-images {
+.wrapper-images {
+  background-color: #f5f5f5;
   margin: auto;
-  width: 70%;
-  margin-top: 2em;
+  width: 100%;
+}
+.row-images {
+  margin-top: -8em;
 }
 .row-images img {
   margin: auto;
   object-fit: fill;
   margin-bottom: 3em;
-  width: 80%;
+  width: 60%;
 }
 .top-wrapper {
-  margin: 15% auto;
-  width: 80%;
+  margin: 10% auto;
+  width: 70%;
+  height: 10vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+}
+.parallax-section {
+  height: 10vh;
+  z-index: 99;
 }
 
 .right-wrapper {
-  text-align: right;
-  text-align: end;
-  color: #fff;
+  color: #000;
   font-family: "Butler";
-  font-size: 20px;
+  font-size: 18px;
+  text-align: right;
+  padding-top: 3em;
 }
 .exit-icon {
-  color: #fff;
+  color: #000;
   font-size: 15px;
   margin-bottom: 2em;
 }
 .project-title {
   font-family: "Butler";
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 500;
-  color: #fff;
+  color: #000;
 }
 
 /*SINGLE PROJECT*/

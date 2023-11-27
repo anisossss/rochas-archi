@@ -9,9 +9,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
   </head>
 
-  <body class="body">
+  <body class="body" style="background-color: white">
     <div id="cursor"></div>
     <div id="cursor-border"></div>
     <div class="navbar" data-cursor="pointer">
@@ -23,41 +25,35 @@
           class="img"
         />
       </a>
-      <div class="flex">
-        <a href="/works">All</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/recrutement">Recrutement</a>
-        <a
-          target="_blank"
-          href="https://calendly.com/d/3s2-353-xqb/rochas-architecture-rendez-vous"
-          >Rendez-vous</a
-        >
-      </div>
     </div>
     <main>
       <div class="project-wrapper">
-        <div class="top-wrapper">
-          <div class="center-wrapper">
-            <div class="exit-icon" data-cursor="pointer">
-              <a href="/works">
-                <i class="fa fa-close"></i>
-              </a>
+        <div class="parallax-section">
+          <div class="top-wrapper">
+            <div class="center-wrapper">
+              <div class="exit-icon" data-cursor="pointer">
+                <a href="/works">
+                  <i class="fa fa-close"></i>
+                </a>
+              </div>
+              <div class="project-title">
+                <h3>Immeuble A_B</h3>
+              </div>
             </div>
-            <div class="project-title">
-              <h3>Immeuble A_B</h3>
+            <div class="right-wrapper">
+              <p>01</p>
+              <p>2004</p>
             </div>
           </div>
-          <div class="right-wrapper">
-            <p>01</p>
-            <p>2004</p>
+          <div class="wrapper-images">
+            <div class="row-images">
+              <img src="/pictures/villa/h_b.webp" alt="img" />
+            </div>
           </div>
-        </div>
-        <div class="row-images">
-          <img src="/pictures/villa/h_b.webp" alt="img" />
         </div>
       </div>
     </main>
+    <script src="/js/project.js"></script>
     <script src="/js/cursor.js"></script>
   </body>
 </html>

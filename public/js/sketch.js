@@ -11,7 +11,6 @@ class Sketch {
     this.duration = opts.duration || 1;
     this.debug = opts.debug || false;
     this.easing = opts.easing || "easeInOut";
-    // this.clicker = document.getElementById("scroller");
     this.container = document.getElementById("slider");
     this.images = JSON.parse(this.container.getAttribute("data-images"));
     this.width = this.container.offsetWidth;

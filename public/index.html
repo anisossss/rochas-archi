@@ -32,7 +32,6 @@
         stroke-width: 110;
         stroke-linecap: butt;
         transform-origin: center;
-        /* transform: rotate(-90deg); */
       }
   </style>
 </head>
@@ -120,6 +119,10 @@
                 class="flex flex-col fixed top-1/2 right-4 md:right-7 transform -translate-y-1/2"></div>
                 <div id="progress-container">
                   <svg id="progress-svg" viewBox="0 0 1000 1000">
+                    <filter id="displacementFilter">
+                      <feTurbulence id="turbulence" type="turbulence" baseFrequency="0.01 .1" numOctaves="1" result="turbulence" seed="53"/>
+                      <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="50" xChannelSelector="R" yChannelSelector="B"/>
+                    </filter>
                     <defs>
                       <pattern
                         id="image-pattern"
@@ -151,12 +154,15 @@
   </main>
 
   <div id="data-trigger-scroller"></div>
-
+ 
   <script src="/js/three.js"></script>
   <script src="/js/sketch.js"></script>
   <script src="/js/effect.js"></script>
   <script src="/js/ux.js"></script>
   <script src="/js/cursor.js"></script>
+
+
+
   <script>
     function animateProgressCircle() {
       const progressCircle = document.getElementById("progress-circle");
@@ -173,17 +179,41 @@
       progressCircle.style.strokeDashoffset = circumference;
 
       const tl = gsap.timeline({
-        defaults: { duration: 2, ease: "power2.inOut" },
+        defaults: { duration: 4, ease: "power2.inOut" },
         onComplete: () => {
           imageIndex = (imageIndex + 1) % images.length;
           patternImage.setAttribute("xlink:href", images[imageIndex]);
-          tl.restart();
+            
+            tl.restart();
         },
       });
       tl.to(progressCircle, { strokeDashoffset: 0 });
-      tl.play();
+      setTimeout(() => {
+            
+        tl.play();
+          }, 1500);
     }
     animateProgressCircle();
+
+
+    const slider = document.getElementById("slider");
+    document.getElementById("progress-circle").addEventListener("mouseenter", function() {
+    gsap.to("#scroller", {
+      scale: 1.08, 
+      transformOrigin: "center center", 
+      duration: 1, 
+      ease: "power2.inOut" 
+    });
+  });
+
+  document.getElementById("progress-circle").addEventListener("mouseleave", function() {
+    gsap.to("#scroller", {
+      scale: 1,
+      transformOrigin: "center center",
+      duration: 1,
+      ease: "power2.inOut"
+    });
+  });
   </script>
 </body>
 
