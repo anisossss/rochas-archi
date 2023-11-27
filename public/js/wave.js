@@ -1,21 +1,18 @@
-window.onload = function () {
-  var img = document.querySelector("#turbulence");
-  var frames = 0;
-  var rad = Math.PI / 180;
+var img = document.querySelector("#displacementFilter feTurbulence");
+var frames = 0;
+var rad = Math.PI / 180;
 
-  function animateBaseFrequency() {
-    var bfx = 0.01;
-    var bfy = 0.1;
+function AnimateBaseFrequency() {
+  bfx = 0.01;
+  bfy = 0.01;
+  frames += 0.3;
+  bfx += 0.03 * Math.cos(frames * rad);
+  bfy += 0.03 * Math.cos(frames * rad);
 
-    frames += 0.025;
-    bfx += 0.001 * Math.cos(frames * rad);
-    bfy += 0.005 * Math.sin(frames * rad);
+  bf = bfx.toString() + " " + bfy.toString();
+  img.setAttributeNS(null, "baseFrequency", bf);
 
-    var bf = bfx.toString() + " " + bfy.toString();
-    img.setAttributeNS(null, "baseFrequency", bf);
+  window.requestAnimationFrame(AnimateBaseFrequency);
+}
 
-    window.requestAnimationFrame(animateBaseFrequency);
-  }
-
-  window.requestAnimationFrame(animateBaseFrequency);
-};
+window.requestAnimationFrame(AnimateBaseFrequency);
