@@ -151,16 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const number = numbersArray[i];
     const link = linksArray[i];
 
-    // Create an anchor element
     const anchorElement = document.createElement("a");
     anchorElement.href = link;
 
-    // Create an image element
     const imgElement = document.createElement("img");
     imgElement.src = imageSrc;
     imgElement.setAttribute("data-cursor", "pointer");
 
-    // Append the image to the anchor element
     anchorElement.appendChild(imgElement);
 
     const titleElement = document.createElement("p");
@@ -174,12 +171,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = document.createElement("div");
     container.classList.add("work-item");
 
-    // Append the anchor element to the container
     container.appendChild(anchorElement);
     container.appendChild(numberElement);
     container.appendChild(titleElement);
+    const parentDiv = document.createElement("div");
+    parentDiv.classList.add("tag-number");
 
-    // Append the container to the worksTimeline
+    parentDiv.appendChild(numberElement);
+    parentDiv.appendChild(titleElement);
+
+    container.appendChild(parentDiv);
+
     worksTimeline.appendChild(container);
   }
+  const tagNumbers = document.querySelectorAll(".tag-number");
+
+  // Animate parent divs with ScrollTrigger
+  tagNumbers.forEach((tagNumber) => {
+    gsap.from(tagNumber, {
+      scrollTrigger: {
+        trigger: tagNumber,
+        start: "center 90%",
+        end: "center 40%",
+        scrub: 1.5,
+        markers: true,
+      },
+      y: 120,
+    });
+  });
 });

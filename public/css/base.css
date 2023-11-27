@@ -181,7 +181,7 @@ h3 {
   transform: translate(-50%, -40%);
 }
 .work-item {
-  margin-bottom: 10%;
+  margin-bottom: 30%;
 }
 .work-item p {
   margin-left: 10%;
@@ -206,12 +206,15 @@ h3 {
   color: #fff;
   font-family: "Butler";
   text-transform: capitalize;
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 22px;
   letter-spacing: 5px;
   width: 70%;
 }
 
+.tag-number {
+  margin-top: -18%;
+}
 .work-item .numbr {
   font-size: 15px !important;
   color: #ffffff80;
